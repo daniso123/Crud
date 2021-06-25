@@ -44,7 +44,7 @@ router.post('/', (req, res, next) => {
 router.get('/:id_Funcionario', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if(error){return res.status(500).send({error: error})}
-        error.query(
+        conn.query(
             "SELECT * FROM Funcionario WHERE id_funcionario = ?;",
             [res.params.id_funcionario],
             (error, resultado,fields)=>{
